@@ -89,20 +89,125 @@ h4 {
   border-bottom: 4px solid var(--ifm-color-gold);
 }
 
-.navbar__title {
+/* brand lockup: SDSC wordmark + stacked title, integrated as one unit */
+.navbar-brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  padding: 0.25rem 0;
+  text-decoration: none;
+}
+
+.navbar-brand-lockup__logo {
+  height: 28px;
+  width: auto;
+}
+
+.navbar-brand-lockup__divider {
+  flex: 0 0 auto;
+  width: 2px;
+  height: 32px;
+  background-color: var(--ifm-color-gold);
+}
+
+.navbar-brand-lockup__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  line-height: 1;
+}
+
+.navbar-brand-lockup__title {
   font-family: var(--ifm-font-family-heading);
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  line-height: 0.95;
   color: var(--ifm-color-primary);
 }
 
-html[data-theme="dark"] .navbar__title {
+.navbar-brand-lockup__subtitle {
+  font-family: var(--ifm-font-family-heading);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  line-height: 1.1;
+  color: var(--ifm-color-secondary);
+}
+
+html[data-theme="dark"] .navbar-brand-lockup__title {
+  color: #e8eef7;
+}
+
+html[data-theme="dark"] .navbar-brand-lockup__subtitle {
   color: var(--ifm-color-gold-light);
 }
 
-.navbar__brand {
-  gap: 0.75rem;
+/* desktop: give the lockup a bit more presence */
+@media (min-width: 997px) {
+  .navbar-brand-lockup {
+    gap: 0.8rem;
+  }
+
+  .navbar-brand-lockup__logo {
+    height: 32px;
+  }
+
+  .navbar-brand-lockup__divider {
+    height: 38px;
+  }
+
+  .navbar-brand-lockup__title {
+    font-size: 1.9rem;
+  }
+
+  .navbar-brand-lockup__subtitle {
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+  }
+}
+
+.navbar-brand-lockup__title,
+.navbar-brand-lockup__subtitle {
+  white-space: nowrap;
+}
+
+/* very small screens: tighter lockup. The color-mode toggle is hidden here
+   because it is also available inside the mobile menu header. */
+@media (max-width: 360px) {
+  .navbar__items--right > button {
+    display: none;
+  }
+
+  .navbar-brand-lockup {
+    gap: 0.45rem;
+  }
+
+  .navbar-brand-lockup__logo {
+    height: 24px;
+  }
+
+  .navbar-brand-lockup__divider {
+    height: 28px;
+  }
+
+  .navbar-brand-lockup__title {
+    font-size: 1.3rem;
+  }
+
+  .navbar-brand-lockup__subtitle {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+/* mobile sidebar header: same lockup, slightly tighter */
+.navbar-sidebar__brand .navbar-brand-lockup {
+  gap: 0.55rem;
+  margin-right: auto;
 }
 
 /* sidebar */
@@ -134,10 +239,18 @@ html[data-theme="dark"] .table-of-contents__link--active {
   color: var(--ifm-color-gold-light);
 }
 
-/* table styling */
+/* table styling: wrapper allows horizontal scrolling of wide tables
+   without overflowing the page */
+.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 table {
   display: table;
   width: 100%;
+  margin-bottom: var(--ifm-leading);
 }
 
 .markdown table thead th {

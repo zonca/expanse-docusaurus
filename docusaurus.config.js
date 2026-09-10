@@ -4,6 +4,34 @@
 // `npm run serve` — serve the production build locally
 
 import { themes as prismThemes } from "prism-react-renderer";
+import { visit } from "unist-util-visit";
+
+/**
+ * Wrap markdown tables in a scrollable div so wide tables scroll
+ * horizontally instead of overflowing the page (keeps native table
+ * semantics for screen readers).
+ */
+const rehypeWrapTables = () => (tree) => {
+  visit(tree, (node, index, parent) => {
+    if (
+      node.type === "element" &&
+      node.tagName === "table" &&
+      parent &&
+      !(
+        parent.type === "element" &&
+        parent.tagName === "div" &&
+        parent.properties?.className?.includes("table-wrapper")
+      )
+    ) {
+      parent.children[index] = {
+        type: "element",
+        tagName: "div",
+        properties: { className: ["table-wrapper"] },
+        children: [node],
+      };
+    }
+  });
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -35,6 +63,7 @@ const config = {
           // Adds an "Edit this page" button on every doc page,
           // linking straight to the file on GitHub
           editUrl: "https://github.com/zonca/expanse-docusaurus/edit/main/",
+          rehypePlugins: [rehypeWrapTables],
         },
         blog: false,
         theme: {
@@ -55,32 +84,9 @@ const config = {
         },
       ],
       navbar: {
-        title: "Expanse User Guide",
-        logo: {
-          alt: "San Diego Supercomputer Center",
-          src: "img/sdsc-logo.svg",
-          srcDark: "img/sdsc-logo-white.svg",
-          href: "https://www.sdsc.edu",
-          target: "_self",
-        },
-        items: [
-          {
-            type: "docSidebar",
-            sidebarId: "userGuide",
-            position: "left",
-            label: "User Guide",
-          },
-          {
-            href: "https://www.sdsc.edu/systems/expanse/index.html",
-            label: "Expanse @ SDSC",
-            position: "right",
-          },
-          {
-            href: "https://github.com/zonca/expanse-docusaurus",
-            label: "GitHub",
-            position: "right",
-          },
-        ],
+        // Brand lockup + color-mode toggle only: all navigation lives in the
+        // docs sidebar, and on mobile the navbar toggle opens that docs menu
+        // directly (no separate "main menu").
       },
       footer: {
         style: "dark",
