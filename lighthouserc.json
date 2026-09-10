@@ -1,0 +1,19 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": "./lighthouse-site",
+      "numberOfRuns": 1,
+      "settings": {
+        "onlyCategories": ["accessibility", "best-practices", "performance", "seo"],
+        "skipAudits": ["canonical", "is-crawlable", "uses-http2"]
+      }
+    },
+    "assert": {
+      "assertions": {
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["warn", { "minScore": 0.9 }]
+      }
+    }
+  }
+}

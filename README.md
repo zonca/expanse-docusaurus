@@ -1,0 +1,42 @@
+# Expanse User Guide
+
+A Docusaurus rebuild of the [SDSC Expanse User Guide](https://www.sdsc.edu/systems/expanse/user_guide.html),
+with all original content preserved and reorganized into a searchable docs site styled with
+[SDSC branding](https://www.sdsc.edu/about/brand.html) (navy `#182B49`, gold `#C69214`, Teko + Source Sans 3).
+
+**Live site:** https://zonca.github.io/expanse-docusaurus/
+
+## Contents
+
+All 14 sections of the original guide, organized by topic:
+
+| Area | Pages |
+| --- | --- |
+| Overview | Technical Summary |
+| Getting Started | System Access, Account Management |
+| Software Environment | Modules, Compiling Codes |
+| Running Jobs | Job Charging, Running Jobs, Using GPU Nodes |
+| Data & Storage | Data Movement, Storage |
+| Advanced Resources | Expanse AI Resource, Composable Systems, Software |
+| Reference | Citations & Publications |
+
+## Contributing
+
+Every page has an **Edit this page on GitHub** button that opens the source file
+for editing. Content fixes are welcome — the source lives in [`docs/`](docs/).
+
+## Development
+
+```bash
+npm install
+npm run start    # dev server at http://localhost:3000
+npm run build    # production build in build/
+npm run serve    # serve the production build locally
+```
+
+## Deployment
+
+Pushing to `main` triggers the [GitHub Actions workflow](.github/workflows/deploy.yml)
+which builds the site and publishes it to GitHub Pages. A separate
+[Lighthouse workflow](.github/workflows/lighthouse.yml) audits every page
+for accessibility (all pages currently score **100**).

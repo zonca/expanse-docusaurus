@@ -1,0 +1,278 @@
+/**
+ * SDSC / UC San Diego brand styling
+ * Colors: PMS 2767 navy (#182B49), PMS 1245 gold (#C69214)
+ * Fonts: Teko (headings), Source Sans 3 (body)
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap");
+
+:root {
+  --ifm-color-primary: #182b49;
+  --ifm-color-primary-dark: #152641;
+  --ifm-color-primary-darker: #13233c;
+  --ifm-color-primary-darkest: #0e1b2f;
+  --ifm-color-primary-light: #1f3556;
+  --ifm-color-primary-lighter: #213961;
+  --ifm-color-primary-lightest: #294675;
+  --ifm-color-gold: #c69214;
+  --ifm-color-gold-light: #d9a72e;
+  --ifm-color-gold-dark: #a97c10;
+  --ifm-color-secondary: #485668;
+  --ifm-font-family-base: "Source Sans 3", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ifm-font-family-heading: "Teko", "Source Sans 3", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ifm-heading-font-weight: 500;
+  --ifm-heading-line-height: 1.15;
+  --ifm-font-size-base: 104%;
+  --ifm-code-font-size: 90%;
+  --ifm-navbar-height: 3.9rem;
+  --ifm-footer-background-color: #182b49;
+  --ifm-footer-color: #f5f3ee;
+  --ifm-footer-link-color: #d9d9d9;
+  --ifm-footer-title-color: #ffffff;
+  --docusaurus-tag-list-border: #c69214;
+}
+
+/* dark theme: brand navy is too dark on dark backgrounds,
+   use a light navy tint for primary-colored elements instead */
+html[data-theme="dark"] {
+  --ifm-color-primary: #9db9e6;
+  --ifm-color-primary-dark: #8aaede;
+  --ifm-color-primary-darker: #7ea6d8;
+  --ifm-color-primary-darkest: #5f8bc7;
+  --ifm-color-primary-light: #aac4eb;
+  --ifm-color-primary-lighter: #b6cdf0;
+  --ifm-color-primary-lightest: #d3e0f7;
+}
+
+/* headings use Teko with slightly reduced size to balance the tall x-height */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ifm-font-family-heading);
+  letter-spacing: 0.01em;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+  font-weight: 500;
+  margin-top: 1.6rem;
+}
+
+h3 {
+  font-size: 1.55rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+/* gold underline accent for h2 */
+.markdown h2 {
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--ifm-color-gold);
+}
+
+/* navbar */
+.navbar {
+  box-shadow: none;
+  border-bottom: 4px solid var(--ifm-color-gold);
+}
+
+.navbar__title {
+  font-family: var(--ifm-font-family-heading);
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ifm-color-primary);
+}
+
+html[data-theme="dark"] .navbar__title {
+  color: var(--ifm-color-gold-light);
+}
+
+.navbar__brand {
+  gap: 0.75rem;
+}
+
+/* sidebar */
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--ifm-toc-border-color);
+}
+
+.sidebar__title {
+  font-family: var(--ifm-font-family-heading);
+  font-size: 1.2rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* active sidebar link gets gold left border */
+.theme-doc-sidebar-menu .menu__link--active:not(.menu__link--sublist) {
+  border-left: 3px solid var(--ifm-color-gold);
+  padding-left: calc(1rem - 3px);
+}
+
+/* TOC gold accent */
+.table-of-contents__link:hover,
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary);
+}
+
+html[data-theme="dark"] .table-of-contents__link:hover,
+html[data-theme="dark"] .table-of-contents__link--active {
+  color: var(--ifm-color-gold-light);
+}
+
+/* table styling */
+table {
+  display: table;
+  width: 100%;
+}
+
+.markdown table thead th {
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  border-color: var(--ifm-color-primary-dark);
+}
+
+.markdown table thead th,
+.markdown table td {
+  vertical-align: top;
+}
+
+html[data-theme="dark"] .markdown table thead th {
+  background-color: #22385c;
+  border-color: #1a2c4a;
+}
+
+/* code blocks */
+.theme-code-block {
+  border-left: 3px solid var(--ifm-color-gold);
+}
+
+code {
+  overflow-wrap: anywhere;
+}
+
+/* buttons */
+.button--primary {
+  --ifm-button-background-color: var(--ifm-color-primary);
+}
+
+/* pagination */
+.pagination-nav__link {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 0;
+}
+
+.pagination-nav__link:hover {
+  border-color: var(--ifm-color-gold);
+}
+
+/* footer */
+.footer--dark {
+  --ifm-footer-background-color: #182b49;
+  --ifm-footer-link-color: #d9d9d9;
+  --ifm-footer-title-color: #ffffff;
+  border-top: 4px solid var(--ifm-color-gold);
+}
+
+.footer__title {
+  font-family: var(--ifm-font-family-heading);
+  font-size: 1.2rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-gold-light);
+}
+
+/* back to top button */
+button.clean-btn.backToTopButton_backToTopButton__LV_xS {
+  background-color: var(--ifm-color-gold);
+}
+
+/* admonitions */
+.danger {
+  --ifm-color-danger: #b3261e;
+  --ra-color-bg: rgba(179, 38, 30, 0.08);
+}
+
+/* links in body text: always underlined so they are not distinguished
+   by color alone (WCAG 1.4.1) */
+.theme-doc-markdown a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.theme-doc-markdown a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.theme-doc-markdown .admonition a {
+  text-decoration: underline;
+}
+
+/* "Edit this page" - make it a visible gold button for contributors */
+.theme-edit-this-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.theme-edit-this-page > svg {
+  display: none;
+}
+
+.theme-edit-this-page::before {
+  content: "";
+  display: inline-block;
+  width: 0.95rem;
+  height: 0.95rem;
+  background-color: currentColor;
+  -webkit-mask-image: var(--ifm-edit-icon);
+  mask-image: var(--ifm-edit-icon);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
+
+a.theme-edit-this-page {
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--ifm-color-gold);
+  border-radius: 0;
+  color: var(--ifm-color-primary);
+  background-color: transparent;
+  transition: all 0.15s ease-in-out;
+}
+
+a.theme-edit-this-page:hover {
+  background-color: var(--ifm-color-gold);
+  color: #182b49;
+  text-decoration: none;
+}
+
+html[data-theme="dark"] a.theme-edit-this-page {
+  color: var(--ifm-color-gold-light);
+}
+
+html[data-theme="dark"] a.theme-edit-this-page:hover {
+  color: #182b49;
+}
+
+:root {
+  --ifm-edit-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.94l-3.75-3.75z'/%3E%3C/svg%3E");
+}
