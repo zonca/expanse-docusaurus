@@ -135,7 +135,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} San Diego Supercomputer Center, UC San Diego.`,
+        copyright: `Copyright © ${new Date().getFullYear()} San Diego Supercomputer Center, UC San Diego. Expanse is funded by the U.S. National Science Foundation.`,
       },
       prism: {
         theme: prismThemes.github,
