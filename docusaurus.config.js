@@ -6,6 +6,10 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import { visit } from "unist-util-visit";
 
+// PR preview builds serve the site under /pr-preview/pr-<number>/, so the
+// base URL is overridable at build time (see .github/workflows/pr-preview.yml).
+const baseUrl = process.env.BASE_URL || "/expanse-docusaurus/";
+
 /**
  * Wrap markdown tables in a scrollable div so wide tables scroll
  * horizontally instead of overflowing the page (keeps native table
@@ -41,7 +45,7 @@ const config = {
 
   // GitHub Pages deployment config
   url: "https://zonca.github.io",
-  baseUrl: "/expanse-docusaurus/",
+  baseUrl: baseUrl,
   organizationName: "zonca",
   projectName: "expanse-docusaurus",
 

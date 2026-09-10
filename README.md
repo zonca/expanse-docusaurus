@@ -36,7 +36,12 @@ npm run serve    # serve the production build locally
 
 ## Deployment
 
-Pushing to `main` triggers the [GitHub Actions workflow](.github/workflows/deploy.yml)
-which builds the site and publishes it to GitHub Pages. A separate
-[Lighthouse workflow](.github/workflows/lighthouse.yml) audits every page
-for accessibility (all pages currently score **100**).
+Pushing to `main` triggers the [deploy workflow](.github/workflows/deploy.yml)
+which builds the site and publishes it to the `gh-pages` branch (served by
+GitHub Pages). A separate [Lighthouse workflow](.github/workflows/lighthouse.yml)
+audits every page for accessibility (all pages currently score **100**).
+
+Every pull request automatically gets a temporary preview at
+`https://zonca.github.io/expanse-docusaurus/pr-preview/pr-<number>/`, posted
+as a comment on the PR. The preview updates on each push and is removed when
+the PR is closed or merged ([preview workflow](.github/workflows/pr-preview.yml)).
