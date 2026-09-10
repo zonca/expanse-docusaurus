@@ -2,8 +2,11 @@
   "ci": {
     "collect": {
       "staticDistDir": "./lighthouse-site",
+      "maxAutodiscoverUrls": 50,
+      "autodiscoverUrlBlocklist": ["/expanse-docusaurus/404.html"],
       "numberOfRuns": 1,
       "settings": {
+        "chromeFlags": "--headless=new --no-sandbox --disable-dev-shm-usage",
         "onlyCategories": ["accessibility", "best-practices", "performance", "seo"],
         "skipAudits": ["canonical", "is-crawlable", "uses-http2"]
       }
